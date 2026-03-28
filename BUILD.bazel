@@ -1,0 +1,23 @@
+load("@rules_cc//cc:defs.bzl", "cc_test")
+
+constraint_setting(
+    name = "gate",
+)
+
+constraint_value(
+    name = "requires_opt_in",
+    constraint_setting = ":gate",
+)
+
+cc_test(
+    name = "manual_test",
+    size = "small",
+    srcs = ["manual_test.cc"],
+    tags = ["manual"],
+)
+
+test_suite(
+    name = "suite",
+    target_compatible_with = [":requires_opt_in"],
+    tests = [":manual_test"],
+)

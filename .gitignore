@@ -1,0 +1,4 @@
+bazel-bin
+bazel-out
+bazel-repro-test-suite-compatible
+bazel-testlogs
